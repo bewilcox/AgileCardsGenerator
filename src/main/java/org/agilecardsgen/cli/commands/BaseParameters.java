@@ -15,7 +15,7 @@ public class BaseParameters {
     @Parameter(names = {"--version","-v"}, description = "Current version of the application")
     private boolean version;
 
-    @Parameter(names = {"--verbose"}, description = "Active verbose mode for all commands")
+    @Parameter(names = {"--verbose"}, description = "Activate verbose mode for all commands")
     private boolean verbose;
 
     public boolean isVersion() {
