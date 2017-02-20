@@ -1,4 +1,4 @@
-package org.agilecardsgen.cli.commands;
+package org.agilecards.cli.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;

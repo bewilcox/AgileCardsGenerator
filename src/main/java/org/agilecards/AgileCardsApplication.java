@@ -1,22 +1,29 @@
-package org.agilecardsgen;
+package org.agilecards;
 
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import org.agilecardsgen.cli.commands.BaseParameters;
+import org.agilecards.cli.commands.BaseParameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Command line interface for the agile card generator
  *
  */
-public class AgileCardsGenApp
+public class AgileCardsApplication
 {
+    private static final Logger LOG = LoggerFactory.getLogger(AgileCardsApplication.class);
     private final BaseParameters baseParams = new BaseParameters();
 
     public static void main( String[] args )
     {
-        AgileCardsGenApp agileCardsGenApp = new AgileCardsGenApp();
-        agileCardsGenApp.handleCLICommands(args);
+        LOG.debug("This is debug trace");
+        LOG.info("This is a info trace");
+        LOG.warn("A warn one");
+        LOG.error("And a error ");
+        AgileCardsApplication agileCardsApplication = new AgileCardsApplication();
+        agileCardsApplication.handleCLICommands(args);
     }
 
     private void handleCLICommands(String[] args) {
@@ -42,7 +49,7 @@ public class AgileCardsGenApp
 
         // Show Application version ?
         if (baseParams.isVersion()) {
-            System.out.println(AgileCardsGenApp.class.getPackage().getImplementationVersion());
+            System.out.println(AgileCardsApplication.class.getPackage().getImplementationVersion());
         }
     }
 

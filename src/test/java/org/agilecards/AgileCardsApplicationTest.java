@@ -1,13 +1,13 @@
-package org.agilecardsgen;
+package org.agilecards;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple AgileCardsGenApp.
+ * Unit test for simple AgileCardsApplication.
  */
-public class AgileCardsGenAppTest
+public class AgileCardsApplicationTest
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class AgileCardsGenAppTest
      *
      * @param testName name of the test case
      */
-    public AgileCardsGenAppTest(String testName )
+    public AgileCardsApplicationTest(String testName )
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class AgileCardsGenAppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AgileCardsGenAppTest.class );
+        return new TestSuite( AgileCardsApplicationTest.class );
     }
 
     /**
