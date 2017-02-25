@@ -1,14 +1,11 @@
-package org.agilecards.cli.commands;
+package org.agilecards.cli.actions;
 
 import org.kohsuke.args4j.Option;
 
 /**
  * Created by Beewy on 22/02/2017.
  */
-public class GenerateCommand {
-
-    @Option(name = "--help", usage = "Show usage", aliases = "-H", help = true, hidden = true)
-    private boolean help;
+public class GenerateAction extends AgileCardsAction{
 
     @Option(name = "--provider", required = true, usage = "Set the provider name", aliases = "-P", metaVar = "{provider name}")
     private String provider;
@@ -24,7 +21,4 @@ public class GenerateCommand {
         return template;
     }
 
-    public boolean isHelp() {
-        return help;
-    }
 }
