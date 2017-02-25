@@ -7,8 +7,10 @@ import org.kohsuke.args4j.Option;
  */
 public abstract class AgileCardsAction {
 
-    @Option(name = "--help", usage = "Show usage", aliases = "-H", help = true, hidden = true)
+    @Option(name = "--help", usage = "Show specific usage", aliases = "-H", help = true, hidden = true)
     private boolean help;
+
+    public abstract void showSpecificUsage();
 
     public boolean isHelp() {
         return help;

@@ -6,5 +6,10 @@ package org.agilecards.cli.actions;
  */
 public class VersionAction extends AgileCardsAction {
 
-
+    /**
+     * Show the specific usage for this action
+     */
+    public void showSpecificUsage() {
+        //TODO Specific Usage
+    }
 }

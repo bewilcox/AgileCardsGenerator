@@ -21,4 +21,10 @@ public class GenerateAction extends AgileCardsAction{
         return template;
     }
 
+    /**
+     * Show the specific usage for this action
+     */
+    public void showSpecificUsage() {
+        //TODO Specific Usage
+    }
 }
