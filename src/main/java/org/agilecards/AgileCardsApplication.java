@@ -25,8 +25,15 @@ public class AgileCardsApplication
         LOG.debug("Initialize application");
         AgileCardsCommandLineManager cli = new Args4jAgileCardsCommandLineManagerImpl();
         cli.handleCLICommands(args);
+
         if (cli.isVerboseActivated()) {
             activateVerboseMode();
+        }
+
+        if (cli.isHelp()) {
+            cli.showUsage();
+        } else {
+            cli.executeAction();
         }
     }
 

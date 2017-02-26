@@ -10,4 +10,8 @@ public interface AgileCardsCommandLineManager {
     void handleCLICommands(String[] args);
 
     boolean isVerboseActivated();
+
+    boolean isHelp();
+
+    void executeAction();
 }

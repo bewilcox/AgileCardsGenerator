@@ -32,12 +32,35 @@ public class Args4jAgileCardsCommandLineManagerImpl implements AgileCardsCommand
     }
 
     /**
+     * Execute the action launch by the user
+     */
+    public void executeAction() {
+        LOG.debug("Start executing the current action");
+        if (this.cliConfiguration.getAction().isHelp()) {
+            LOG.debug("Show specific usage is asked");
+            this.cliConfiguration.getAction().showSpecificUsage();
+        } else {
+
+        }
+
+    }
+
+    /**
      * Flag to show debug logs and stack traces.
      * @return
      */
     public boolean isVerboseActivated() {
         return this.cliConfiguration.isVerbose();
     }
+
+    /**
+     * Flag to show the main usage
+     * @return
+     */
+    public boolean isHelp() {
+        return this.cliConfiguration.isHelp();
+    }
+
 
     /**
      * Show usage.
@@ -49,10 +72,17 @@ public class Args4jAgileCardsCommandLineManagerImpl implements AgileCardsCommand
                 "Based on your customs templates, you can generate your stories and/or tasks from differents sources,\n" +
                 "like a .cvs file, xlsx file or from a third party application.");
         System.out.println("");
-        System.out.println("Example : " + AgileCardsConfiguration.APP_NAME + "[action] [options]");
-        System.out.println("With verbose mode : " + AgileCardsConfiguration.APP_NAME + "--log [action] [options]");
+        System.out.println("Example : " + AgileCardsConfiguration.APP_NAME + " [action] [options]");
+        System.out.println("With verbose mode : " + AgileCardsConfiguration.APP_NAME + " --log [action] [options]");
+        System.out.println("");
         System.out.println("Usage : ");
         this.parser.printUsage(System.out);
+        System.out.println("");
+        System.out.println("Actions : ");
+        System.out.println("\t" + AgileCardsConfiguration.VERSION_ACTION + "\t\t: " + AgileCardsConfiguration.VERSION_USAGE);
+        System.out.println("\t" + AgileCardsConfiguration.INIT_ACTION + "\t\t: "  + AgileCardsConfiguration.INIT_USAGE);
+        System.out.println("\t" + AgileCardsConfiguration.GENERATE_ACTION + "\t: " + AgileCardsConfiguration.GENERATE_USAGE);
+        System.out.println("\t" + AgileCardsConfiguration.BLANK_ACTION + "\t\t: "  + AgileCardsConfiguration.BLANK_USAGE);
     }
 
 

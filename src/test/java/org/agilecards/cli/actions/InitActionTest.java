@@ -1,16 +1,40 @@
 package org.agilecards.cli.actions;
 
+import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Beewy on 25/02/2017.
  */
-public class InitActionTest {
+public class InitActionTest extends BaseActionTest {
+
+    @Test
+    public void testVersionAction() throws Exception {
+        parser.parseArgument("init");
+        Assert.assertTrue(cliConfiguration.getAction() instanceof InitAction);
+        Assert.assertFalse(cliConfiguration.isVerbose());
+    }
+
+    @Test
+    public void testVersionActionWithVerbose() throws Exception {
+        parser.parseArgument("--log","init");
+        Assert.assertTrue(cliConfiguration.getAction() instanceof InitAction);
+        Assert.assertTrue(cliConfiguration.isVerbose());
+    }
+
     @Test
     public void showSpecificUsage() throws Exception {
+        parser.parseArgument("init","--help");
+        Assert.assertTrue(cliConfiguration.getAction().isHelp());
 
+        String expectedSpecificUsage =
+                "agile-cards init : Init the configuration and template files\n" +
+                        "\n" +
+                        "Usage : agile-cards init [options]\n" +
+                        " --help (-H) : Show specific usage (default: false)\n";
+
+        cliConfiguration.getAction().showSpecificUsage();
+        Assert.assertEquals(expectedSpecificUsage,outContent.toString());
     }
 
 }
