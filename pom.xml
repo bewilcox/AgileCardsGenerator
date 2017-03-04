@@ -2,13 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.agilecardgen</groupId>
-    <artifactId>acg-cli</artifactId>
-    <version>0.1.0</version>
+    <groupId>org.agilecards</groupId>
+    <artifactId>agile-cards</artifactId>
+    <version>0.1.0_SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>acg-cli</name>
-    <url>http://maven.apache.org</url>
+    <name>agile-cards</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,10 +15,26 @@
 
     <dependencies>
 
+        <!-- Logger -->
         <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>1.60</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <!-- Colors for the Logger -->
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>1.10</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
+            <version>2.33</version>
         </dependency>
 
         <dependency>
@@ -41,10 +56,13 @@
                 <configuration>
                     <programs>
                         <program>
-                            <mainClass>org.agilecardsgen.AgileCardsGenApp</mainClass>
-                            <id>acgen</id>
+                            <mainClass>org.agilecards.AgileCardsApplication</mainClass>
+                            <id>agile-cards</id>
                         </program>
                     </programs>
+                    <configurationDirectory>src/main/ressources</configurationDirectory>
+                    <configurationSourceDirectory>src/main/ressources</configurationSourceDirectory>
+                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
                 </configuration>
             </plugin>
             <!--  Plugin to read application version from the manifest at runtime -->
@@ -54,7 +72,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.agilecardsgen.AgileCardsGenApp</mainClass>
+                            <mainClass>org.agilecards.AgileCardsApplication</mainClass>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                     </archive>
