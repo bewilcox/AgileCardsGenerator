@@ -10,14 +10,14 @@ import org.junit.Test;
 public class BlankActionTest extends BaseActionTest{
 
     @Test
-    public void testVersionAction() throws Exception {
+    public void testBlankAction() throws Exception {
         parser.parseArgument("blank");
         Assert.assertTrue(cliConfiguration.getAction() instanceof BlankAction);
         Assert.assertFalse(cliConfiguration.isVerbose());
     }
 
     @Test
-    public void testVersionActionWithVerbose() throws Exception {
+    public void testBlankActionWithVerbose() throws Exception {
         parser.parseArgument("--log","blank");
         Assert.assertTrue(cliConfiguration.getAction() instanceof BlankAction);
         Assert.assertTrue(cliConfiguration.isVerbose());

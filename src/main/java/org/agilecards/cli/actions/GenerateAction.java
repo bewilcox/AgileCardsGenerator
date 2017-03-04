@@ -1,5 +1,6 @@
 package org.agilecards.cli.actions;
 
+import org.agilecards.configuration.AgileCardsConfiguration;
 import org.kohsuke.args4j.Option;
 
 /**
@@ -25,6 +26,7 @@ public class GenerateAction extends AgileCardsAction{
      * Show the specific usage for this action
      */
     public void showSpecificUsage() {
-        //TODO Specific Usage
+        super.showUsage(AgileCardsConfiguration.GENERATE_ACTION,
+                AgileCardsConfiguration.GENERATE_USAGE);
     }
 }
