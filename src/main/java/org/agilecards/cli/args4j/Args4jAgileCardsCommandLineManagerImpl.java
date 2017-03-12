@@ -1,6 +1,9 @@
 package org.agilecards.cli.args4j;
 
+import org.agilecards.exceptions.AgileCardsException;
 import org.agilecards.cli.AgileCardsCommandLineManager;
+import org.agilecards.cli.BaseManager;
+import org.agilecards.cli.actions.VersionAction;
 import org.agilecards.configuration.AgileCardsConfiguration;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -10,7 +13,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by Beewy on 25/02/2017.
  */
-public class Args4jAgileCardsCommandLineManagerImpl implements AgileCardsCommandLineManager {
+public class Args4jAgileCardsCommandLineManagerImpl extends BaseManager implements AgileCardsCommandLineManager {
 
     private static final Logger LOG = LoggerFactory.getLogger(Args4jAgileCardsCommandLineManagerImpl.class);
     private CmdLineParser parser;
@@ -20,14 +23,13 @@ public class Args4jAgileCardsCommandLineManagerImpl implements AgileCardsCommand
      * CLI Arguments parsing.
      * @param args
      */
-    public void handleCLICommands(String[] args) {
+    public void handleCLICommands(String[] args) throws AgileCardsException {
         this.cliConfiguration = new Args4jCliConfiguration();
         parser = new CmdLineParser(cliConfiguration);
         try {
             parser.parseArgument(args);
         } catch (CmdLineException e) {
-            LOG.error(e.getMessage());
-            this.showUsage();
+            throw new AgileCardsException();
         }
     }
 
@@ -40,9 +42,15 @@ public class Args4jAgileCardsCommandLineManagerImpl implements AgileCardsCommand
             LOG.debug("Show specific usage is asked");
             this.cliConfiguration.getAction().showSpecificUsage();
         } else {
+            LOG.debug("Run the following action : {}",this.cliConfiguration.getAction().getClass().getCanonicalName());
+
+            // Version
+            if (this.cliConfiguration.getAction() instanceof VersionAction) {
+                System.out.println(AgileCardsConfiguration.APP_NAME + " " + this.getVersionService().getApplicationVersion());
+            }
+
 
         }
-
     }
 
     /**

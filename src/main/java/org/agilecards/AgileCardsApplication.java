@@ -4,6 +4,7 @@ package org.agilecards;
 import ch.qos.logback.classic.Level;
 import org.agilecards.cli.AgileCardsCommandLineManager;
 import org.agilecards.cli.args4j.Args4jAgileCardsCommandLineManagerImpl;
+import org.agilecards.exceptions.AgileCardsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,18 +23,23 @@ public class AgileCardsApplication
      */
     public static void main( String[] args )
     {
-        LOG.debug("Initialize application");
         AgileCardsCommandLineManager cli = new Args4jAgileCardsCommandLineManagerImpl();
-        cli.handleCLICommands(args);
+        try {
+            cli.handleCLICommands(args);
 
-        if (cli.isVerboseActivated()) {
-            activateVerboseMode();
-        }
+            if (cli.isVerboseActivated()) {
+                activateVerboseMode();
+            }
 
-        if (cli.isHelp()) {
+            if (cli.isHelp()) {
+                cli.showUsage();
+            } else {
+                cli.executeAction();
+            }
+
+        } catch (AgileCardsException e) {
+            LOG.error("Error during parameters parsing");
             cli.showUsage();
-        } else {
-            cli.executeAction();
         }
     }
 
