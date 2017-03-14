@@ -26,7 +26,11 @@ public class GenerateAction extends AgileCardsAction{
      * Show the specific usage for this action
      */
     public void showSpecificUsage() {
-        super.showUsage(AgileCardsConfiguration.GENERATE_ACTION,
-                AgileCardsConfiguration.GENERATE_USAGE);
+        super.showUsage(this.getName(),AgileCardsConfiguration.GENERATE_USAGE);
+    }
+
+    @Override
+    public String getName() {
+        return AgileCardsConfiguration.GENERATE_ACTION;
     }
 }

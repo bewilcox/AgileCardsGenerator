@@ -1,5 +1,8 @@
 package org.agilecards.cli.args4j;
 
+import org.agilecards.cli.actions.BlankAction;
+import org.agilecards.cli.actions.GenerateAction;
+import org.agilecards.cli.actions.InitAction;
 import org.agilecards.exceptions.AgileCardsException;
 import org.agilecards.cli.AgileCardsCommandLineManager;
 import org.agilecards.cli.BaseManager;
@@ -42,14 +45,10 @@ public class Args4jAgileCardsCommandLineManagerImpl extends BaseManager implemen
             LOG.debug("Show specific usage is asked");
             this.cliConfiguration.getAction().showSpecificUsage();
         } else {
-            LOG.debug("Run the following action : {}",this.cliConfiguration.getAction().getClass().getCanonicalName());
-
-            // Version
-            if (this.cliConfiguration.getAction() instanceof VersionAction) {
-                System.out.println(AgileCardsConfiguration.APP_NAME + " " + this.getVersionService().getApplicationVersion());
-            }
-
-
+            LOG.debug("Run the following action : {}",this.cliConfiguration.getAction().getName());
+            this.getTaskProvider()
+                    .getTask(this.cliConfiguration.getAction().getName())
+                    .execute();
         }
     }
 
@@ -92,6 +91,4 @@ public class Args4jAgileCardsCommandLineManagerImpl extends BaseManager implemen
         System.out.println("\t" + AgileCardsConfiguration.GENERATE_ACTION + "\t: " + AgileCardsConfiguration.GENERATE_USAGE);
         System.out.println("\t" + AgileCardsConfiguration.BLANK_ACTION + "\t\t: "  + AgileCardsConfiguration.BLANK_USAGE);
     }
-
-
 }

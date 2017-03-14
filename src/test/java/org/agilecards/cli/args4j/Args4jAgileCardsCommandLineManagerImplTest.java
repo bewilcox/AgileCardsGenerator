@@ -2,8 +2,6 @@ package org.agilecards.cli.args4j;
 
 import org.agilecards.cli.actions.VersionAction;
 import org.agilecards.exceptions.AgileCardsException;
-import org.agilecards.service.VersionService;
-import org.agilecards.service.impl.VersionServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -86,15 +84,6 @@ public class Args4jAgileCardsCommandLineManagerImplTest {
 
     }
 
-    @Test
-    public void getVersionService() throws Exception {
-        String[] args = {"version"};
-        manager.handleCLICommands(args);
-        VersionService versionService = manager.getVersionService();
-        assertNotNull(versionService);
-        assertTrue(versionService instanceof VersionServiceImpl);
-
-    }
 
     private String getUsageString() {
        return "Generate your agile cards, and print them !\n" +
