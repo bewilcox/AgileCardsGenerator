@@ -11,8 +11,12 @@ public class InitAction extends AgileCardsAction {
      * Show the specific usage for this action
      */
     public void showSpecificUsage() {
-        super.showUsage(AgileCardsConfiguration.INIT_ACTION,
-                AgileCardsConfiguration.INIT_USAGE);
+        super.showUsage(this.getName(),AgileCardsConfiguration.INIT_USAGE);
+    }
+
+    @Override
+    public String getName() {
+        return AgileCardsConfiguration.INIT_ACTION;
     }
 
 }

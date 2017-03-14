@@ -11,8 +11,12 @@ public class BlankAction extends AgileCardsAction {
      * Show the specific usage for this action
      */
     public void showSpecificUsage() {
-        super.showUsage(AgileCardsConfiguration.BLANK_ACTION,
-                AgileCardsConfiguration.BLANK_USAGE);
+        super.showUsage(this.getName(), AgileCardsConfiguration.BLANK_USAGE);
+    }
+
+    @Override
+    public String getName() {
+        return AgileCardsConfiguration.BLANK_ACTION;
     }
 
 }

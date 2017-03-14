@@ -15,6 +15,8 @@ public abstract class AgileCardsAction {
 
     public abstract void showSpecificUsage();
 
+    public abstract String getName();
+
     protected void showUsage(String actionName, String actionUsage) {
         System.out.println(AgileCardsConfiguration.APP_NAME + " " +
                 actionName + " : " +
