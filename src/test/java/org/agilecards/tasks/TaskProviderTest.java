@@ -3,7 +3,7 @@ package org.agilecards.tasks;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Beewy on 14/03/2017.

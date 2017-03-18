@@ -1,13 +1,9 @@
 package org.agilecards.cli.args4j;
 
-import org.agilecards.cli.actions.BlankAction;
-import org.agilecards.cli.actions.GenerateAction;
-import org.agilecards.cli.actions.InitAction;
-import org.agilecards.exceptions.AgileCardsException;
 import org.agilecards.cli.AgileCardsCommandLineManager;
 import org.agilecards.cli.BaseManager;
-import org.agilecards.cli.actions.VersionAction;
 import org.agilecards.configuration.AgileCardsConfiguration;
+import org.agilecards.exceptions.AgileCardsException;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;

@@ -2,7 +2,6 @@ package org.agilecards;
 
 import ch.qos.logback.classic.Level;
 import org.agilecards.configuration.AgileCardsConfiguration;
-import org.agilecards.exceptions.AgileCardsException;
 import org.junit.Before;
 import org.junit.Test;
 

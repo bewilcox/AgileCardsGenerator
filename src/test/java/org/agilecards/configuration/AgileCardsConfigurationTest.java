@@ -1,9 +1,15 @@
 package org.agilecards.configuration;
 
+import org.agilecards.configuration.file.ConfigurationFile;
+import org.agilecards.configuration.file.ConfigurationFileReader;
+import org.agilecards.configuration.file.GeneratorConfig;
 import org.junit.Test;
-import java.io.File;
 
-import static org.junit.Assert.*;
+import java.io.File;
+import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for the configuration.
@@ -37,6 +43,7 @@ public class AgileCardsConfigurationTest
     
     @Test
     public void testPropertiesConstants() throws Exception {
+        assertEquals("type",AgileCardsConfiguration.PROP_TYPE);
         assertEquals("data_file",AgileCardsConfiguration.PROP_DATA_FILE_PATH);
         assertEquals("header",AgileCardsConfiguration.PROP_HEADER);
         assertEquals("sheet_name",AgileCardsConfiguration.PROP_SHEET_NAME);
@@ -56,44 +63,44 @@ public class AgileCardsConfigurationTest
         
         // Test configuration for csv data provider
         //////////////////////////////////////////////////
-        GeneratorConfig generatorConfig = configFile.getGeneratorConfig("config_avec_csv");
-        assertNotNull("Config for config_avec_csv must be not null", generatorConfig);
-        assertEquals("config_avec_csv", configFile.getName());        
+        Optional<GeneratorConfig> generatorConfig = configFile.getGeneratorConfig("config_avec_csv");
+        assertTrue("Config for config_avec_csv must be not null", generatorConfig.isPresent());
+        assertEquals("config_avec_csv", generatorConfig.get().getName());
         // Test DataProvider conf
-        assertEquals("csv", configFile.getDataProvider().getType());
-        assertEquals("dede.csv", configFile.getDataProvider().getProperty(AgileCardsConfiguration.PROP_DATA_FILE_PATH));
-        assertEquals("true", configFile.getDataProvider().getProperty(AgileCardsConfiguration.PROP_HEADER));
+        assertEquals("csv", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_TYPE));
+        assertEquals("dede.csv", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_DATA_FILE_PATH));
+        assertEquals("true", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_HEADER));
         // Test Card Template
-        assertEquals("story", configFile.getCardTemplate().getName());
-        String[] mapping = configFile.getCardTemplate().getMapping();
-        assertEquals(4, mapping.length());
+        assertEquals("story", generatorConfig.get().getCardTemplate().getName());
+        String[] mapping = generatorConfig.get().getCardTemplate().getMapping();
+        assertEquals(4, mapping.length);
         assertEquals("A1" , mapping[0]);
         assertEquals("B2", mapping[1]);
         assertEquals("C3", mapping[2]);
         assertEquals("D4", mapping[3]);
-        
+
         // Test configuration for xls data provider
         //////////////////////////////////////////////////
         generatorConfig = configFile.getGeneratorConfig("config_avec_xlsx");
-        assertNotNull("Config for config_avec_xlsx must be not null", generatorConfig);
-        assertEquals("config_avec_xlsx", generatorConfig.getName());        
+        assertTrue("Config for config_avec_xlsx must be not null", generatorConfig.isPresent());
+        assertEquals("config_avec_xlsx", generatorConfig.get().getName());
         // Test DataProvider conf
-        assertEquals("xlsx", generatorConfig.getDataProvider().getType());
-        assertEquals("dede.xlsx", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_DATA_FILE_PATH));
-        assertEquals("false", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_HEADER));
-        assertEquals("Backlog", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_SHEET_NAME));
-        
+        assertEquals("xlsx", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_TYPE));
+        assertEquals("dede.xlsx", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_DATA_FILE_PATH));
+        assertEquals("false", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_HEADER));
+        assertEquals("Backlog", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_SHEET_NAME));
+
         // Test configuration for xls data provider
         //////////////////////////////////////////////////
         generatorConfig = configFile.getGeneratorConfig("config_avec_rtc");
-        assertNotNull("Config for config_avec_rtc must be not null", generatorConfig);
-        assertEquals("config_avec_rtc", generatorConfig.getName());        
+        assertTrue("Config for config_avec_rtc must be not null", generatorConfig.isPresent());
+        assertEquals("config_avec_rtc", generatorConfig.get().getName());
         // Test DataProvider conf
-        assertEquals("rtc", generatorConfig.getDataProvider().getType());
-        assertEquals("https://host:9393/jazz", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_JAZZ_SERVER_URL));
-        assertEquals("mylogin", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_JAZZ_LOGIN));
-        assertEquals("myproject", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_JAZZ_PROJECT_AREA));
-        assertEquals("myquery", generatorConfig.getDataProvider().getProperty(AgileCardsConfiguration.PROP_JAZZ_QUERY_NAME));
-        
+        assertEquals("rtc", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_TYPE));
+        assertEquals("https://host:9393/jazz", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_JAZZ_SERVER_URL));
+        assertEquals("mylogin", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_JAZZ_LOGIN));
+        assertEquals("myproject", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_JAZZ_PROJECT_AREA));
+        assertEquals("myquery", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_JAZZ_QUERY_NAME));
+
     }
 }
