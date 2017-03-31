@@ -1,4 +1,4 @@
-package org.agilecards.cli.actions;
+package org.agilecards.cli.commands;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,14 +11,14 @@ public class BlankActionTest extends BaseActionTest{
     @Test
     public void testBlankAction() throws Exception {
         parser.parseArgument("blank");
-        Assert.assertTrue(cliConfiguration.getAction() instanceof BlankAction);
+        Assert.assertTrue(cliConfiguration.getAction() instanceof BlankCommand);
         Assert.assertFalse(cliConfiguration.isVerbose());
     }
 
     @Test
     public void testBlankActionWithVerbose() throws Exception {
         parser.parseArgument("--log","blank");
-        Assert.assertTrue(cliConfiguration.getAction() instanceof BlankAction);
+        Assert.assertTrue(cliConfiguration.getAction() instanceof BlankCommand);
         Assert.assertTrue(cliConfiguration.isVerbose());
     }
 

@@ -1,6 +1,6 @@
 package org.agilecards.cli.args4j;
 
-import org.agilecards.cli.actions.VersionAction;
+import org.agilecards.cli.commands.VersionCommand;
 import org.agilecards.exceptions.AgileCardsException;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +48,7 @@ public class Args4jAgileCardsCommandLineManagerImplTest {
 
     @Test
     public void executeActionWithUsage_Version() throws Exception {
-        VersionAction versionAction = new VersionAction();
+        VersionCommand versionAction = new VersionCommand();
         versionAction.showSpecificUsage();
         String specificUsage = outContent.toString();
         outContent.reset();

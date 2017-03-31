@@ -1,4 +1,4 @@
-package org.agilecards.cli.actions;
+package org.agilecards.cli.commands;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,14 +12,14 @@ public class VersionActionTest extends BaseActionTest{
     @Test
     public void testVersionAction() throws Exception {
         parser.parseArgument("version");
-        Assert.assertTrue(cliConfiguration.getAction() instanceof VersionAction);
+        Assert.assertTrue(cliConfiguration.getAction() instanceof VersionCommand);
         Assert.assertFalse(cliConfiguration.isVerbose());
     }
 
     @Test
     public void testVersionActionWithVerbose() throws Exception {
         parser.parseArgument("--log","version");
-        Assert.assertTrue(cliConfiguration.getAction() instanceof VersionAction);
+        Assert.assertTrue(cliConfiguration.getAction() instanceof VersionCommand);
         Assert.assertTrue(cliConfiguration.isVerbose());
     }
 

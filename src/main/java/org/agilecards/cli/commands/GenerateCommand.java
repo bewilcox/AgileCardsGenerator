@@ -1,4 +1,4 @@
-package org.agilecards.cli.actions;
+package org.agilecards.cli.commands;
 
 import org.agilecards.configuration.AgileCardsConfiguration;
 import org.kohsuke.args4j.Option;
@@ -6,7 +6,7 @@ import org.kohsuke.args4j.Option;
 /**
  * Created by Beewy on 22/02/2017.
  */
-public class GenerateAction extends AgileCardsAction{
+public class GenerateCommand extends AgileCardsCommand {
 
     @Option(name = "--provider", required = true, usage = "Set the provider name", aliases = "-P", metaVar = "{provider name}")
     private String provider;

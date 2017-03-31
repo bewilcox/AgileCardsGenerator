@@ -1,6 +1,6 @@
 package org.agilecards.cli.args4j;
 
-import org.agilecards.cli.actions.*;
+import org.agilecards.cli.commands.*;
 import org.agilecards.configuration.AgileCardsConfiguration;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.Option;
@@ -27,19 +27,19 @@ public class Args4jCliConfiguration {
     private boolean help;
 
     /**
-     * Declaration of the application actions.
+     * Declaration of the application commands.
      */
     @Argument(required = true,
             metaVar = "action",
             usage = "Actions. Use {action} --help for specific usage",
             handler = SubCommandHandler.class)
     @SubCommands({
-            @SubCommand(name = AgileCardsConfiguration.VERSION_ACTION, impl=VersionAction.class),
-            @SubCommand(name = AgileCardsConfiguration.INIT_ACTION, impl=InitAction.class),
-            @SubCommand(name = AgileCardsConfiguration.GENERATE_ACTION, impl=GenerateAction.class),
-            @SubCommand(name = AgileCardsConfiguration.BLANK_ACTION, impl=BlankAction.class),
+            @SubCommand(name = AgileCardsConfiguration.VERSION_ACTION, impl=VersionCommand.class),
+            @SubCommand(name = AgileCardsConfiguration.INIT_ACTION, impl=InitCommand.class),
+            @SubCommand(name = AgileCardsConfiguration.GENERATE_ACTION, impl=GenerateCommand.class),
+            @SubCommand(name = AgileCardsConfiguration.BLANK_ACTION, impl=BlankCommand.class),
     })
-    private AgileCardsAction action;
+    private AgileCardsCommand action;
 
 
     public boolean isVerbose() {
@@ -50,7 +50,7 @@ public class Args4jCliConfiguration {
         return help;
     }
 
-    public AgileCardsAction getAction() {
+    public AgileCardsCommand getAction() {
         return action;
     }
 }

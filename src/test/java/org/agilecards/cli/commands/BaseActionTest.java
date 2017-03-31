@@ -1,4 +1,4 @@
-package org.agilecards.cli.actions;
+package org.agilecards.cli.commands;
 
 import org.agilecards.cli.args4j.Args4jCliConfiguration;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package org.agilecards.cli.actions;
+package org.agilecards.cli.commands;
 
 
 import org.agilecards.configuration.AgileCardsConfiguration;
@@ -7,7 +7,7 @@ import org.agilecards.configuration.AgileCardsConfiguration;
  * CLI Config for the action "version"
  * Created by Beewy on 20/02/2017.
  */
-public class VersionAction extends AgileCardsAction {
+public class VersionCommand extends AgileCardsCommand {
 
     /**
      * Show the specific usage for this action

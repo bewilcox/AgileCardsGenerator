@@ -1,7 +1,7 @@
 package org.agilecards.cli.args4j;
 
-import org.agilecards.cli.actions.BaseActionTest;
-import org.agilecards.cli.actions.VersionAction;
+import org.agilecards.cli.commands.BaseActionTest;
+import org.agilecards.cli.commands.VersionCommand;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class Args4jCliConfigurationTest extends BaseActionTest {
     @Test
     public void getAction() throws Exception {
         parser.parseArgument("--log","version");
-        Assert.assertTrue(cliConfiguration.getAction() instanceof VersionAction);
+        Assert.assertTrue(cliConfiguration.getAction() instanceof VersionCommand);
     }
 
 }
