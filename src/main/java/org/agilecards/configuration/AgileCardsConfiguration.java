@@ -1,7 +1,16 @@
 package org.agilecards.configuration;
 
+import org.agilecards.configuration.file.ConfigurationFile;
+import org.agilecards.configuration.file.ConfigurationFileReader;
+import org.agilecards.exceptions.AgileCardsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 
 /**
@@ -36,11 +45,27 @@ public class AgileCardsConfiguration {
 
     // Config Initialization
     public AgileCardsConfiguration() {
-
+        try {
+            this.loadConfigurationFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (AgileCardsException e) {
+            e.printStackTrace();
+        }
     }
 
 
     //Manage configuration file
+    private void loadConfigurationFile() throws IOException, AgileCardsException {
+        Path file = Paths.get("./agile-cards.yml");
+        if (Files.isReadable(file)) {
+            ConfigurationFile configFile = ConfigurationFileReader.read(Files.newInputStream(file, StandardOpenOption.READ));
+            LOG.info("Configuration file version {}",configFile.getVersion());
+        } else {
+            LOG.error("The configuration file agile-cards.yml was not found. See the init command to recreate it.");
+            System.exit(1);
+        }
+    }
 
     public static String getApplicationVersion() {
         return AgileCardsConfiguration.class.getPackage().getImplementationVersion();

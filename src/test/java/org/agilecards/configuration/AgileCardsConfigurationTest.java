@@ -5,7 +5,6 @@ import org.agilecards.configuration.file.ConfigurationFileReader;
 import org.agilecards.configuration.file.GeneratorConfig;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -56,9 +55,9 @@ public class AgileCardsConfigurationTest
     @Test
     public void testLoadConfigurationFile_version1() throws Exception {
    
-        File file = new File(getClass().getClassLoader().getResource("agile-cards-v1.yml").getFile());
+        //File file = new File(getClass().getClassLoader().getResource("agile-cards-v1.yml").getFile());
 
-        ConfigurationFile configFile = ConfigurationFileReader.read(file);
+        ConfigurationFile configFile = ConfigurationFileReader.read(getClass().getClassLoader().getResourceAsStream("agile-cards-v1.yml"));
         assertEquals(1, configFile.getVersion());
         
         // Test configuration for csv data provider

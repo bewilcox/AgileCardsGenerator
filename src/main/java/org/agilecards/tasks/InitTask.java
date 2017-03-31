@@ -15,4 +15,8 @@ public class InitTask implements AgileCardsTask {
         LOG.error("Action not implemented yet ....");
     }
 
+//    Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rw-rw-rw-");
+//    FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(perms);
+//    Files.createFile(file, attr);
+//    System.exit(1);
 }

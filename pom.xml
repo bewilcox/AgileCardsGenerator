@@ -4,7 +4,7 @@
 
     <groupId>org.agilecards</groupId>
     <artifactId>agile-cards</artifactId>
-    <version>0.2.0_SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>agile-cards</name>

@@ -12,6 +12,7 @@ public class GenerateTask implements AgileCardsTask {
 
     @Override
     public void execute() {
+
         LOG.error("Action not implemented yet ....");
     }
 
