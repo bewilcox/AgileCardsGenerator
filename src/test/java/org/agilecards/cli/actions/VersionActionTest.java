@@ -29,10 +29,10 @@ public class VersionActionTest extends BaseActionTest{
         Assert.assertTrue(cliConfiguration.getAction().isHelp());
 
         String expectedSpecificUsage =
-                "agile-cards version : Show the application version\n" +
-                "\n" +
-                "Usage : agile-cards version [options]\n" +
-                " --help (-H) : Show specific usage (default: false)\n";
+                "agile-cards version : Show the application version" + System.getProperty("line.separator") +
+                System.getProperty("line.separator") +
+                "Usage : agile-cards version [options]" + System.getProperty("line.separator") +
+                " --help (-H) : Show specific usage (default: false)" + System.getProperty("line.separator");
 
         cliConfiguration.getAction().showSpecificUsage();
         Assert.assertEquals(expectedSpecificUsage,outContent.toString());

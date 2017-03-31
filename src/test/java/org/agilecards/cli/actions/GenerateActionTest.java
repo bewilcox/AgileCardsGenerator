@@ -39,10 +39,10 @@ public class GenerateActionTest extends BaseActionTest {
         Assert.assertTrue(cliConfiguration.getAction().isHelp());
 
         String expectedSpecificUsage =
-                "agile-cards generate : Generate the agile cards\n" +
-                        "\n" +
-                        "Usage : agile-cards generate [options]\n" +
-                        " --help (-H) : Show specific usage (default: false)\n";
+                "agile-cards generate : Generate the agile cards" + System.getProperty("line.separator") +
+                        System.getProperty("line.separator") +
+                        "Usage : agile-cards generate [options]" + System.getProperty("line.separator") +
+                        " --help (-H) : Show specific usage (default: false)" + System.getProperty("line.separator");
 
         cliConfiguration.getAction().showSpecificUsage();
         Assert.assertEquals(expectedSpecificUsage,outContent.toString());

@@ -29,10 +29,10 @@ public class InitActionTest extends BaseActionTest {
         Assert.assertTrue(cliConfiguration.getAction().isHelp());
 
         String expectedSpecificUsage =
-                "agile-cards init : Init the configuration and template files\n" +
-                        "\n" +
-                        "Usage : agile-cards init [options]\n" +
-                        " --help (-H) : Show specific usage (default: false)\n";
+                "agile-cards init : Init the configuration and template files" + System.getProperty("line.separator") +
+                        System.getProperty("line.separator") +
+                        "Usage : agile-cards init [options]" + System.getProperty("line.separator") +
+                        " --help (-H) : Show specific usage (default: false)" + System.getProperty("line.separator");
 
         cliConfiguration.getAction().showSpecificUsage();
         Assert.assertEquals(expectedSpecificUsage,outContent.toString());

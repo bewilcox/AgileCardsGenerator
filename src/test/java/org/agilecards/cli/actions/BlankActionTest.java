@@ -28,10 +28,10 @@ public class BlankActionTest extends BaseActionTest{
         Assert.assertTrue(cliConfiguration.getAction().isHelp());
 
         String expectedSpecificUsage =
-                "agile-cards blank : Generate blank cards\n" +
-                        "\n" +
-                        "Usage : agile-cards blank [options]\n" +
-                        " --help (-H) : Show specific usage (default: false)\n";
+                "agile-cards blank : Generate blank cards" + System.getProperty("line.separator") +
+                        System.getProperty("line.separator") +
+                        "Usage : agile-cards blank [options]" + System.getProperty("line.separator") +
+                        " --help (-H) : Show specific usage (default: false)" + System.getProperty("line.separator");
 
         cliConfiguration.getAction().showSpecificUsage();
         Assert.assertEquals(expectedSpecificUsage,outContent.toString());

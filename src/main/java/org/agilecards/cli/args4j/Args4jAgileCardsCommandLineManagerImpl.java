@@ -3,7 +3,9 @@ package org.agilecards.cli.args4j;
 import org.agilecards.cli.AgileCardsCommandLineManager;
 import org.agilecards.cli.BaseManager;
 import org.agilecards.configuration.AgileCardsConfiguration;
+import org.agilecards.exceptions.AgileCardsApplicationException;
 import org.agilecards.exceptions.AgileCardsException;
+import org.agilecards.exceptions.AgileCardsParsingException;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;
@@ -22,20 +24,20 @@ public class Args4jAgileCardsCommandLineManagerImpl extends BaseManager implemen
      * CLI Arguments parsing.
      * @param args
      */
-    public void handleCLICommands(String[] args) throws AgileCardsException {
+    public void handleCLICommands(String[] args) throws AgileCardsParsingException {
         this.cliConfiguration = new Args4jCliConfiguration();
         parser = new CmdLineParser(cliConfiguration);
         try {
             parser.parseArgument(args);
         } catch (CmdLineException e) {
-            throw new AgileCardsException();
+            throw new AgileCardsParsingException();
         }
     }
 
     /**
      * Execute the action launch by the user
      */
-    public void executeAction() {
+    public void executeAction() throws AgileCardsApplicationException {
         LOG.debug("Start executing the current action");
         if (this.cliConfiguration.getAction().isHelp()) {
             LOG.debug("Show specific usage is asked");
