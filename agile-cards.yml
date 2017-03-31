@@ -1,0 +1,33 @@
+#C'est un commentaire
+version: 1
+
+generators:
+  - name: config_avec_csv
+    data_provider:
+      type: csv
+      data_file: dede.csv
+      header: true
+    card_template:
+      name: story
+      mapping: [A1,B2,C3,D4]
+
+  - name: config_avec_xlsx
+    data_provider:
+      type: xlsx
+      data_file: dede.xlsx
+      header: false
+      sheet_name: Backlog
+    card_template:
+      name: story
+      mapping: [A1,B2,C3,D4]
+
+  - name: config_avec_rtc
+    data_provider:
+      type: rtc
+      jazz_server_url: https://host:9393/jazz
+      jazz_user: mylogin
+      project_area: myproject
+      query_name: myquery
+    card_template:
+     name: story
+     mapping: [A1,B2,C3,D4]

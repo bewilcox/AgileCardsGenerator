@@ -12,17 +12,16 @@ public class GenerateActionTest extends BaseActionTest {
 
     @Test
     public void testGenerateAction() throws Exception {
-        parser.parseArgument("generate","--provider","csv","--template","task");
+        parser.parseArgument("generate","--generator","toto");
         Assert.assertTrue(cliConfiguration.getAction() instanceof GenerateCommand);
         Assert.assertFalse(cliConfiguration.isVerbose());
         GenerateCommand generateAction = (GenerateCommand)cliConfiguration.getAction();
-        Assert.assertEquals(generateAction.getProvider(),"csv");
-        Assert.assertEquals(generateAction.getTemplate(),"task");
+        Assert.assertEquals(generateAction.getGenerator(),"toto");
     }
 
     @Test
     public void testGenerateActionWithVerbose() throws Exception {
-        parser.parseArgument("--log","generate","--provider","csv","--template","task");
+        parser.parseArgument("--log","generate","--generator","toto");
         Assert.assertTrue(cliConfiguration.getAction() instanceof GenerateCommand);
         Assert.assertTrue(cliConfiguration.isVerbose());
     }

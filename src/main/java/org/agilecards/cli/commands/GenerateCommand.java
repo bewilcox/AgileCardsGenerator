@@ -8,18 +8,11 @@ import org.kohsuke.args4j.Option;
  */
 public class GenerateCommand extends AgileCardsCommand {
 
-    @Option(name = "--provider", required = true, usage = "Set the provider name", aliases = "-P", metaVar = "{provider name}")
-    private String provider;
+    @Option(name = "--generator", required = true, usage = "Set the generator name", aliases = "-G", metaVar = "{generator name}")
+    private String generator;
 
-    @Option(name = "--template", required = true, usage = "Set the template name", aliases = "-T", metaVar = "{template name}")
-    private String template;
-
-    public String getProvider() {
-        return provider;
-    }
-
-    public String getTemplate() {
-        return template;
+    public String getGenerator() {
+        return generator;
     }
 
     /**

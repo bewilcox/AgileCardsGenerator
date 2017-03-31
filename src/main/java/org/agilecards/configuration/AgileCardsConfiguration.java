@@ -56,7 +56,7 @@ public class AgileCardsConfiguration {
         try {
             if (Files.isReadable(file)) {
                 configFile = ConfigurationFileReader.read(Files.newInputStream(file, StandardOpenOption.READ));
-                LOG.info("Configuration file version {}", configFile.getVersion());
+                LOG.debug("Configuration file version {}", configFile.getVersion());
             } else {
                 LOG.error("The configuration file agile-cards.yml was not found. See the init command to recreate it.");
                 System.exit(1);
