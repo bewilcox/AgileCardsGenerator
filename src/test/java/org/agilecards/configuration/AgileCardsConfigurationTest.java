@@ -5,6 +5,8 @@ import org.agilecards.configuration.file.ConfigurationFileReader;
 import org.agilecards.configuration.file.GeneratorConfig;
 import org.junit.Test;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -56,8 +58,8 @@ public class AgileCardsConfigurationTest
     public void testLoadConfigurationFile_version1() throws Exception {
    
         //File file = new File(getClass().getClassLoader().getResource("agile-cards-v1.yml").getFile());
-
-        ConfigurationFile configFile = ConfigurationFileReader.read(getClass().getClassLoader().getResourceAsStream("agile-cards-v1.yml"));
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("agile-cards-v1.yml");
+        ConfigurationFile configFile = ConfigurationFileReader.read(inputStream);
         assertEquals(1, configFile.getVersion());
         
         // Test configuration for csv data provider
@@ -89,7 +91,7 @@ public class AgileCardsConfigurationTest
         assertEquals("false", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_HEADER));
         assertEquals("Backlog", generatorConfig.get().getDataProvider().get(AgileCardsConfiguration.PROP_SHEET_NAME));
 
-        // Test configuration for xls data provider
+        // Test configuration for RTC data provider
         //////////////////////////////////////////////////
         generatorConfig = configFile.getGeneratorConfig("config_avec_rtc");
         assertTrue("Config for config_avec_rtc must be not null", generatorConfig.isPresent());

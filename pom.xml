@@ -78,8 +78,8 @@
                             <id>agile-cards</id>
                         </program>
                     </programs>
-                    <configurationDirectory>src/main/ressources</configurationDirectory>
-                    <configurationSourceDirectory>src/main/ressources</configurationSourceDirectory>
+                    <configurationDirectory>src/main/resources</configurationDirectory>
+                    <configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
                     <copyConfigurationDirectory>true</copyConfigurationDirectory>
                 </configuration>
             </plugin>
